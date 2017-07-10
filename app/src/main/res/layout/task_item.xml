@@ -23,23 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="CheckBox"
+        android:text="Task Completed?"
         android:textColor="@android:color/holo_purple"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="date"
-        android:onClick="onDateClick"
-        android:textColor="@android:color/holo_orange_dark"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
 
     <TextView
         android:id="@+id/description"
@@ -51,6 +38,19 @@
         android:textColor="@android:color/holo_blue_bright"
         app:layout_constraintLeft_toRightOf="@+id/type"
         app:layout_constraintRight_toLeftOf="@+id/done"
-        tools:layout_editor_absoluteY="8dp" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_blue_bright"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        tools:text="date" />
 
 </android.support.constraint.ConstraintLayout>
