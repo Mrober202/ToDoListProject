@@ -1,5 +1,6 @@
 package com.example.michaelrobertson.todolist;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import static android.R.attr.priority;
@@ -8,17 +9,16 @@ import static android.R.attr.priority;
  * Created by michaelrobertson on 09/07/2017.
  */
 
-public class Task {
+public class Task implements Serializable {
 
     private String type;
     private Date date;
     private boolean done;
     private String description;
 
-    public Task(String type, Date date, boolean done, String description) {
+    public Task(String type, Date date, String description) {
         this.type = type;
         this.date = date;
-        this.done = done;
         this.description = description;
     }
 

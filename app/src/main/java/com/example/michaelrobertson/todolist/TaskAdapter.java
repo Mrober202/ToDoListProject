@@ -1,22 +1,13 @@
 package com.example.michaelrobertson.todolist;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-import static android.R.attr.startYear;
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by michaelrobertson on 10/07/2017.

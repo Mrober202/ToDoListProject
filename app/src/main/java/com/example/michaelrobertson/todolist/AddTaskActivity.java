@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.michaelrobertson.todolist.R.id.date;
@@ -22,6 +24,7 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
     EditText type_txt;
     EditText description_txt;
     EditText date_txt;
+    Button save;
     String type;
     String description;
     String date;
@@ -34,21 +37,24 @@ public class AddTaskActivity extends AppCompatActivity implements DatePickerDial
         type_txt = (EditText)findViewById(R.id.type_txt);
         description_txt = (EditText)findViewById(R.id.description_txt);
         date_txt = (EditText)findViewById(R.id.date_txt);
-
-
-
+        save = (Button)findViewById(R.id.save_button);
     }
 
         public void onSaveButtonClicked(View view) {
 //            save info inputted by user.
             TaskList taskList = new TaskList();
-            taskList.getList();
 
-            type_txt.setText(type);
-            description_txt.setText(description);
-            date_txt.setText(date);
+            type =  type_txt.getText().toString();
+            description = description_txt.getText().toString();
+            date = date_txt.getText().toString();
+            Date newDate = new Date(date);
+
+            ArrayList<Task> newTasks = taskList.getList();
+            Task newTask = new Task(type, newDate, description);
+            newTasks.add(newTask);
 
             Intent intent = new Intent(this, TaskActivity.class);
+            intent.putExtra("task", newTask);
             startActivity(intent);
         }
 
