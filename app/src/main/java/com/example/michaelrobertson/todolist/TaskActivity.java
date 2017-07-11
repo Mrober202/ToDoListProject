@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import static com.example.michaelrobertson.todolist.R.id.date;
 import static com.example.michaelrobertson.todolist.R.id.date_txt;
+import static com.example.michaelrobertson.todolist.R.id.edit_query;
 import static com.example.michaelrobertson.todolist.R.id.type_txt;
 
 public class TaskActivity extends AppCompatActivity {
@@ -31,14 +32,18 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.task_list);
 
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.list_file_key), Context.MODE_PRIVATE);
+//        SharedPreferences.Editor delete = sharedPreferences.edit();
+//        delete.clear();
+//        delete.apply();
         String listTask = sharedPreferences.getString("ListTask", new ArrayList<Task>().toString());
 
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> taskArrayList = new TypeToken<ArrayList<Task>>(){};
         ArrayList<Task> listTaskItem = gson.fromJson(listTask, taskArrayList.getType());
-
-        Task newTask = (Task)getIntent().getSerializableExtra("task");
-        listTaskItem.add(newTask);
+        if (getIntent().getExtras() != null) {
+            Task newTask = (Task) getIntent().getSerializableExtra("task");
+            listTaskItem.add(newTask);
+        }
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("ListTask", gson.toJson(listTaskItem));

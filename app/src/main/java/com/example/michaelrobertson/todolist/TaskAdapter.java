@@ -37,7 +37,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         description.setText(currentTask.getDescription().toString());
 
         TextView date = (TextView)listItemView.findViewById(R.id.date);
-        date.setText(currentTask.toString());
+        date.setText(currentTask.getDate());
 
         listItemView.setTag(currentTask);
 
