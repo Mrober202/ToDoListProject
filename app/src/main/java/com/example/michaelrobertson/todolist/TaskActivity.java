@@ -1,13 +1,12 @@
 package com.example.michaelrobertson.todolist;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -15,16 +14,13 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-import static com.example.michaelrobertson.todolist.R.id.date;
-import static com.example.michaelrobertson.todolist.R.id.date_txt;
-import static com.example.michaelrobertson.todolist.R.id.edit_query;
-import static com.example.michaelrobertson.todolist.R.id.type_txt;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static com.example.michaelrobertson.todolist.R.id.checkbox;
+import static com.example.michaelrobertson.todolist.R.id.done;
 
 public class TaskActivity extends AppCompatActivity {
 
-    EditText type_txt;
-    EditText description_txt;
-    EditText date_txt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +34,19 @@ public class TaskActivity extends AppCompatActivity {
         String listTask = sharedPreferences.getString("ListTask", new ArrayList<Task>().toString());
 
         Gson gson = new Gson();
-        TypeToken<ArrayList<Task>> taskArrayList = new TypeToken<ArrayList<Task>>(){};
+        TypeToken<ArrayList<Task>> taskArrayList = new TypeToken<ArrayList<Task>>() {
+        };
         ArrayList<Task> listTaskItem = gson.fromJson(listTask, taskArrayList.getType());
         if (getIntent().getExtras() != null) {
             Task newTask = (Task) getIntent().getSerializableExtra("task");
             listTaskItem.add(newTask);
         }
+
+//        for(Task task : listTaskItem){
+//            if(task.getDone() != true){
+////                Checkbox.isChecked();
+//            }
+//        }
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("ListTask", gson.toJson(listTaskItem));
@@ -51,25 +54,21 @@ public class TaskActivity extends AppCompatActivity {
 
         TaskAdapter taskAdapter = new TaskAdapter(this, listTaskItem);
 
-        ListView listView = (ListView)findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.list);
 
         listView.setAdapter(taskAdapter);
     }
 
     public void getTask(View listItem) {
-        Task task = (Task)listItem.getTag();
+        Task task = (Task) listItem.getTag();
 
         Intent intent = new Intent(this, ListActivity.class);
         intent.putExtra("task", task);
+        startActivity(intent);
     }
 
     public void onAddClick(View view) {
         Intent intent = new Intent(this, AddTaskActivity.class);
-        startActivity(intent);
-    }
-
-    public void onListClick(View view) {
-        Intent intent = new Intent(this, TaskActivity.class);
         startActivity(intent);
     }
 }

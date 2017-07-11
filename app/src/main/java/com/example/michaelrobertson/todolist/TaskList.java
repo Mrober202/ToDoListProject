@@ -14,7 +14,7 @@ public class TaskList {
     public TaskList() {
         Date date = new Date();
         list = new ArrayList<Task>();
-        list.add(new Task("Physical", date, "Fix fense"));
+        list.add(new Task("Physical", date, "Fix fense", true));
     }
 
     public ArrayList<Task> getList() {

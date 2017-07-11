@@ -1,12 +1,9 @@
 package com.example.michaelrobertson.todolist;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,10 +12,6 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import static com.example.michaelrobertson.todolist.R.id.date;
-import static com.example.michaelrobertson.todolist.R.id.date_txt;
-import static com.example.michaelrobertson.todolist.R.id.description;
 
 public class AddTaskActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +22,7 @@ public class AddTaskActivity extends AppCompatActivity implements View.OnClickLi
     String type;
     String description;
     String date;
+    boolean done;
     Button btnDatePicker;
     int day, month, year;
 
@@ -78,7 +72,7 @@ public class AddTaskActivity extends AppCompatActivity implements View.OnClickLi
                 Date newDate = new Date(date);
 
                 ArrayList<Task> newTasks = taskList.getList();
-                Task newTask = new Task(type, newDate, description);
+                Task newTask = new Task(type, newDate, description, done);
                 newTasks.add(newTask);
 
                 Intent intent = new Intent(this, TaskActivity.class);

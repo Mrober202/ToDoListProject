@@ -1,25 +1,29 @@
 package com.example.michaelrobertson.todolist;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
+import android.widget.TextView;
 
 public class ListActivity extends AppCompatActivity {
+
+    TextView singleType;
+    TextView singleDesc;
+    TextView singleDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        singleType = (TextView)findViewById(R.id.single_type);
+        singleDesc = (TextView)findViewById(R.id.single_desc);
+        singleDate = (TextView)findViewById(R.id.single_date);
 
 
-        View view = (View)findViewById(R.id.ListView);
+        Task task = (Task)getIntent().getExtras().get("task");
+        singleType.setText(task.getType());
+        singleDesc.setText(task.getDescription());
+        singleDate.setText(task.getDate());
+
     }
 }
