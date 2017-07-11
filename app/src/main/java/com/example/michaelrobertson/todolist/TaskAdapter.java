@@ -29,6 +29,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
             listItemView= LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
         }
 
+
         Task currentTask = getItem(position);
 
         TextView type = (TextView)listItemView.findViewById(R.id.type);

@@ -3,6 +3,7 @@ package com.example.michaelrobertson.todolist;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,6 +42,7 @@ public class TaskActivity extends AppCompatActivity {
             Task newTask = (Task) getIntent().getSerializableExtra("task");
             listTaskItem.add(newTask);
         }
+
 
 //        for(Task task : listTaskItem){
 //            if(task.getDone() != true){
