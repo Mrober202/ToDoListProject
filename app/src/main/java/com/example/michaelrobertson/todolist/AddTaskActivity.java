@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,23 +79,9 @@ public class AddTaskActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(this, TaskActivity.class);
                 intent.putExtra("task", newTask);
                 startActivity(intent);
+
+                Toast.makeText(this, "You added a new task!", Toast.LENGTH_SHORT).show();
             }
 
     }
-//        public boolean onTouch (View view){
-//            DatePickerDialog datePickerDialog = new DatePickerDialog(
-//                    this, AddTaskActivity.this, 2017, 07, 8);
-//            datePickerDialog.show();
-//            return true;
-//        }
-//
-//
-//        @Override
-//        public void onDateSet (DatePicker datePicker,int year, int month, int day){
-//            Date newDate = new Date();
-//            newDate.setYear(year);
-//            newDate.setMonth(month);
-//            newDate.setDate(day);
-//            date_txt.setText(newDate.toString());
-//        }
 

@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="6dp"
         android:layout_marginTop="8dp"
+        android:onClick="onCheckClick"
         android:text="Done?"
         android:textColor="?android:attr/colorActivatedHighlight"
         android:textSize="24sp"

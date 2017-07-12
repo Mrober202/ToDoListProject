@@ -42,9 +42,6 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         date.setText(currentTask.getDate());
 
         CheckBox done = (CheckBox)listItemView.findViewById(R.id.done);
-        if(done.isChecked()){
-            done.setChecked(true);
-        }
         done.setChecked(currentTask.getDone());
 
         listItemView.setTag(currentTask);
